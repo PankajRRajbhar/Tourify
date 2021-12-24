@@ -1,7 +1,7 @@
-@extends('layouts.layout')
+@extends('layouts.layout',['user'=>'pankaj'])
 
 @section('title','index')
 
 @section('content')
-    free
+    hi
 @endsection
