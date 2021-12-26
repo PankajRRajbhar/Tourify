@@ -18,6 +18,17 @@ Route::get('admin/', function () {
     return view('admin.pages.login');
 });*/
 
-Route::get('admin/',[AdminController::class,'login']);
-Route::post("/admin/index",[AdminController::class,'authenticateAdmin']);
+Route::prefix('admin')->group(function(){
+    Route::get('/',[AdminController::class,'login'])->name('admin');
+    
+    Route::post("index",[AdminController::class,'authenticateAdmin'],404)
+        ->name('admin_index');
+    
+    Route::get("logout",[AdminController::class,'logout']);
+});
+/*
+Route::get('admin/',[AdminController::class,'login'])->name('admin');
+Route::post("/admin/index",[AdminController::class,'authenticateAdmin'],404)
+        ->name('admin_index');
 Route::get("admin/logout",[AdminController::class,'logout']);
+*/
